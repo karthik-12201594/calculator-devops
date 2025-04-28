@@ -10,22 +10,22 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t calculator-app .'
+                bat 'docker build -t calculator-app .'
             }
         }
 
         stage('Stop Old Container') {
             steps {
-                sh '''
-                    docker stop calculator-container || true
-                    docker rm calculator-container || true
+                bat '''
+                    docker stop calculator-container || exit 0
+                    docker rm calculator-container || exit 0
                 '''
             }
         }
 
         stage('Run New Docker Container') {
             steps {
-                sh 'docker run -d --name calculator-container -p 8081:80 calculator-app'
+                bat 'docker run -d --name calculator-container -p 8081:80 calculator-app'
             }
         }
     }
