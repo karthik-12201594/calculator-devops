@@ -18,7 +18,7 @@ function calculate(value) {
   }
 }
 
-// Swaps the stylesheet to achieve dark mode.
+
 function changeTheme() {
   const theme = document.getElementById("theme");
   setTimeout(() => {
